@@ -11,5 +11,12 @@ const data = await res.json();
     <h1>sidebar</h1>
     <Link href="/about">about</Link>
     <a href="/">another one</a>
+    <p id="copyright"></p>
   </div>
+  <script>
+    import { getCopyRightYear } from "../utils/copyright.js";
+    const newDate = new Date();
+    document.querySelector("#copyright").textContent =
+      getCopyRightYear(newDate);
+  </script>
 </BaseLayout>
