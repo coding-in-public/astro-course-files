@@ -1,18 +1,12 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
 const data = await res.json();
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <p>{data.title}</p>
-  </body>
-</html>
+<BaseLayout title="myTitle">
+  <div>
+    <h1>sidebar</h1>
+  </div>
+</BaseLayout>
