@@ -1,0 +1,29 @@
+---
+import Card from "../../components/Card.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// images
+import car from "../../assets/car.png";
+import carrie from "../../assets/carrie.png";
+
+const alt = "car";
+const pill = "technology";
+const title = "Why is the Tesla Cybertruck designed the way it is?";
+const description = "A cool description";
+const author_name = "Joe Brewer";
+const time = "2 h ago";
+---
+
+<BaseLayout>
+  <h1>about</h1>
+  <Card
+    img={car.src}
+    alt={alt}
+    pill={pill}
+    title={title}
+    description={description}
+    author_img={carrie.src}
+    author_name={author_name}
+    time={time}
+  />
+</BaseLayout>
