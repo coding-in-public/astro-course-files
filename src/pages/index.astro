@@ -1,16 +1,24 @@
 ---
-
+import Button from "../components/Button.astro";
+import { Icon } from "astro-icon";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+    <Button id="my-btn" aria-label="Add to cart" variety="default" isBordered>
+      <span>Btn text</span>
+      <Icon name="ph:apple-logo-fill" width="24" />
+    </Button>
+    <Button id="my-btn" aria-label="Add to cart" variety="icon" isBordered>
+      <Icon name="ph:apple-logo-fill" width="24" />
+    </Button>
+  </body>
 </html>
