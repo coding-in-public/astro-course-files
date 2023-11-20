@@ -1,6 +1,5 @@
 ---
-const { tagName, size, classes, ...rest } = Astro.props;
-const Tag = tagName;
+import { type HTMLAttributes } from "astro/types";
 
 const headingOptions = {
   h1: "xxl",
@@ -10,6 +9,15 @@ const headingOptions = {
   h5: "sm",
   h6: "xs",
 };
+
+interface Props extends HTMLAttributes<keyof typeof headingOptions> {
+  tagName: keyof typeof headingOptions;
+  size: keyof typeof headingOptions;
+  classes?: string;
+}
+
+const { tagName, size, classes, ...rest } = Astro.props;
+const Tag = tagName;
 ---
 
 <Tag {...rest} class:list={["default", headingOptions[size], classes]}>

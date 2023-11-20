@@ -1,25 +1,5 @@
 ---
-import Button from "../components/Button.astro";
-import { Icon } from "astro-icon";
 import Heading from "../components/Heading.astro";
-
-const headings = [
-  {
-    tagName: "h1",
-    size: "h2",
-    text: "Heading 1",
-  },
-  {
-    tagName: "h2",
-    size: "h5",
-    text: "Heading 2",
-  },
-  {
-    tagName: "h3",
-    size: "h6",
-    text: "Heading 3",
-  },
-];
 ---
 
 <html lang="en">
@@ -31,15 +11,6 @@ const headings = [
     <title>Astro</title>
   </head>
   <body>
-    {
-      headings.map((heading) => (
-        <>
-          <p>hi</p>
-          <Heading tagName={heading.tagName} size={heading.size}>
-            {heading.text}
-          </Heading>
-        </>
-      ))
-    }
+    <Heading tagName="h1" size="h5">Heading</Heading>
   </body>
 </html>
