@@ -1,0 +1,68 @@
+[
+  {
+    "tier": "Free",
+    "most_popular": false,
+    "amount_per_month": 0,
+    "title": "Great for starters",
+    "description": "Discover how to create your first projects",
+    "btn_text": "Get started",
+    "features": [
+      {
+        "title": "3 new projects/month",
+        "checked": true
+      },
+      {
+        "title": "Basic interactions",
+        "checked": false
+      },
+      {
+        "title": "Assets library",
+        "checked": false
+      }
+    ]
+  },
+  {
+    "tier": "Pro",
+    "most_popular": true,
+    "amount_per_month": 8,
+    "title": "For small teams",
+    "description": "Create projects for multiple clients",
+    "btn_text": "Join Now",
+    "features": [
+      {
+        "title": "6 new projects/month",
+        "checked": true
+      },
+      {
+        "title": "Basic interactions",
+        "checked": true
+      },
+      {
+        "title": "Assets library",
+        "checked": true
+      }
+    ]
+  },
+  {
+    "tier": "Enterprise",
+    "most_popular": false,
+    "amount_per_month": 12,
+    "title": "For dev agencies",
+    "description": "Expand into a full web dev agency",
+    "btn_text": "Get started",
+    "features": [
+      {
+        "title": "10 new projects/month",
+        "checked": true
+      },
+      {
+        "title": "Advanced interactions",
+        "checked": true
+      },
+      {
+        "title": "Assets library",
+        "checked": true
+      }
+    ]
+  }
+]
