@@ -1,0 +1,41 @@
+---
+const { tagName, size, classes, ...rest } = Astro.props;
+const Tag = tagName;
+
+const headingOptions = {
+  h1: "xxl",
+  h2: "xl",
+  h3: "lg",
+  h4: "md",
+  h5: "sm",
+  h6: "xs",
+};
+---
+
+<Tag {...rest} class:list={["default", headingOptions[size], classes]}>
+  <slot />
+</Tag>
+
+<style>
+  .default {
+    line-height: 1.1;
+  }
+  .xxl {
+    font-size: 6rem;
+  }
+  .xl {
+    font-size: 5rem;
+  }
+  .lg {
+    font-size: 4rem;
+  }
+  .md {
+    font-size: 3rem;
+  }
+  .sm {
+    font-size: 2rem;
+  }
+  .xs {
+    font-size: 1rem;
+  }
+</style>
