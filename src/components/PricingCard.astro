@@ -1,0 +1,53 @@
+---
+// library imports
+import { Icon } from "astro-icon";
+
+const {
+  tier,
+  most_popular,
+  amount_per_month,
+  title,
+  description,
+  btn_text,
+  features,
+} = Astro.props;
+---
+
+<article>
+  <p>{tier}</p>
+
+  <!-- badge -->
+  {most_popular && <p class="badge">Most Popular</p>}
+
+  <!-- amount -->
+  <div class="amt">
+    <span>$</span>
+    <p>{amount_per_month}</p>
+    {amount_per_month > 0 && <span>/mo</span>}
+  </div>
+
+  <!-- title -->
+  <h3>{title}</h3>
+
+  <!-- description -->
+  <p class="desc">{description}</p>
+
+  <!-- button -->
+  <!-- <Button></Button> -->
+
+  <!-- features -->
+  <ul>
+    {
+      features.map((f) => (
+        <li class="feature">
+          {f.checked ? (
+            <Icon name="radix-icons:check" width="24" />
+          ) : (
+            <Icon name="radix-icons:cross-2" width="24" />
+          )}
+          <span>{f.title}</span>
+        </li>
+      ))
+    }
+  </ul>
+</article>
