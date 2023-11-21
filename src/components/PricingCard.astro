@@ -2,6 +2,9 @@
 // library imports
 import { Icon } from "astro-icon";
 
+// component imports
+import Button from "./Button.astro";
+
 const {
   tier,
   most_popular,
@@ -33,7 +36,9 @@ const {
   <p class="desc">{description}</p>
 
   <!-- button -->
-  <!-- <Button></Button> -->
+  <Button id={tier.toLowerCase()}>
+    {btn_text}
+  </Button>
 
   <!-- features -->
   <ul>

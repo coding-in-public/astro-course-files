@@ -1,0 +1,7 @@
+---
+const { classes, isFilled, theme, ...rest } = Astro.props;
+---
+
+<button class:list={["btn", classes, { filled: isFilled }, theme]} {...rest}>
+  <slot />
+</button>
