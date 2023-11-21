@@ -34,3 +34,7 @@ Fonts
 - Family: 'Inter'
 - Weights: semi-bold
 - Sizes: 3.125rem, 1rem, 0.75rem
+
+Icons
+- Check: https://icones.js.org/collection/radix-icons?s=check  (check)
+- X: https://icones.js.org/collection/radix-icons?s=cross (cross-2)
