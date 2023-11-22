@@ -1,4 +1,12 @@
 ---
+import { type HTMLAttributes } from "astro/types";
+import type { Card } from "../pages/index.astro";
+
+interface Props extends HTMLAttributes<"button"> {
+  theme: Card["tier"];
+  classes?: string;
+}
+
 const { classes, theme, ...rest } = Astro.props;
 ---
 

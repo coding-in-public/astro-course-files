@@ -5,6 +5,20 @@ import PricingCard from "../components/PricingCard.astro";
 // data
 import pricingCardData from "../data/cardData.json";
 
+// types
+export type Card = {
+  tier: string;
+  most_popular: boolean;
+  amount_per_month: number;
+  title: string;
+  description: string;
+  btn_text: string;
+  features: {
+    title: string;
+    checked: boolean;
+  }[];
+};
+
 // style imports
 import "../styles/main.css";
 ---
@@ -20,7 +34,7 @@ import "../styles/main.css";
   <body>
     <main>
       <div class="card-wrapper">
-        {pricingCardData.map((card) => <PricingCard {...card} />)}
+        {pricingCardData.map((card: Card) => <PricingCard data={card} />)}
       </div>
     </main>
     <style>
