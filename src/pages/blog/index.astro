@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Import a single file
+import * as myPost from "./post-1.md";
+
+// Import multiple files with Astro.glob
+type Frontmatter = {
+  title: string;
+};
+
+const posts = await Astro.glob<Frontmatter>("./*.md");
+---
+
+<BaseLayout title="Home">
+  <h1>Blog Page</h1>
+  <ul>
+    <li><a href={myPost.url}>{myPost.frontmatter.title}</a></li>
+    {
+      posts.map((p) => (
+        <li>
+          <a href={p.url}>{p.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
