@@ -2,14 +2,14 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // Import a single file
-import * as myPost from "./post-1.md";
+import * as myPost from "./post-1.mdx";
 
 // Import multiple files with Astro.glob
 type Frontmatter = {
   title: string;
 };
 
-const posts = await Astro.glob<Frontmatter>("./*.md");
+const posts = await Astro.glob<Frontmatter>("./*.{md,mdx}");
 ---
 
 <BaseLayout title="Home">
