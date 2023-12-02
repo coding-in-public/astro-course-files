@@ -4,6 +4,21 @@ layout: "../../layouts/BlogLayout.astro"
 ---
 
 export const customProp = "hi";
+import Link from "../../components/Link.astro"
+import Blockquote from "../../components/Blockquote.astro"
+import Button from "../../components/Button"
+export const components = { blockquote: Blockquote }
+
+
+> blockquotes are awesome
+
+<Link href="/blog">
+BACCCCCCCCCCCCCK
+</Link>
+
+<Button client:load>
+A Button
+</Button>
 
 # Hi there!
 
