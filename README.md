@@ -1,40 +1,47 @@
-# Directions
+# Astro Starter Kit: Minimal
 
-Create a component that matches image below
+```sh
+npm create astro@latest -- --template minimal
+```
 
-## Notes
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
 
-- Use the data file in src/data
-- Consider which sections of the card to further turn into components
-- Optionally add TypeScript declarations
-- Optionally style with CSS, Tailwind, SCSS, etc.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-# Component Requirements
+## 🚀 Project Structure
 
-!["pricing card"](pricing-cards.jpg)
+Inside of your Astro project, you'll see the following folders and files:
 
-# Style Guide
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-Colors
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-- #F4F4F9
-- #0C0C1D
-- #4C4CB2
-- #D0AA25
-- #D93535
-- #1EAC3E
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-Shadows
+Any static assets, like images, can be placed in the `public/` directory.
 
-- Default: 0px 20px 25px 0px rgba(194, 194, 214, 0.30)
-- Purple: 0px 20px 25px 0px rgba(76, 76, 178, 0.20)
+## 🧞 Commands
 
-Fonts
+All commands are run from the root of the project, from a terminal:
 
-- Family: 'Inter'
-- Weights: semi-bold
-- Sizes: 3.125rem, 1rem, 0.75rem
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-Icons
-- Check: https://icones.js.org/collection/radix-icons?s=check  (check)
-- X: https://icones.js.org/collection/radix-icons?s=cross (cross-2)
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
