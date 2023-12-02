@@ -1,13 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-import { Content as PromoBanner } from "../components/promoBanner.md";
-
-const renderedHTML = `<h1>hi</h1>`;
 ---
 
 <BaseLayout title="Home">
   <h1>Homepage</h1>
-  <PromoBanner />
-  <Fragment set:html={renderedHTML} />
 </BaseLayout>
