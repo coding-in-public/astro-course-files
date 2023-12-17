@@ -4,6 +4,8 @@ tags: ["product", "tutorial"]
 pubDate: 2023-12-09
 isDraft: false
 author: christina
+cover: ./images/post-2.jpg
+coverAlt: "laptop at night"
 ---
 
 Do laboris ut fugiat labore. Commodo ullamco deserunt mollit enim occaecat qui. Aliquip dolore quis id duis consequat consectetur nulla. Dolor enim ea aute occaecat commodo et et ipsum culpa qui adipisicing qui ex fugiat cillum. Adipisicing proident eiusmod minim. Ex aute ea ut deserunt aliquip esse adipisicing aute in incididunt. Cupidatat ipsum laboris dolore sint amet proident nisi.
