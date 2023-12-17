@@ -12,6 +12,10 @@ const posts = await getCollection("posts");
     {team.map((t) => <li>{t.data.name}</li>)}
   </ul>
   <ul>
-    {posts.map((p) => <li>{p.data.title}</li>)}
+    {
+      posts.map((p) => {
+        return <li>{p.data.author.id}</li>;
+      })
+    }
   </ul>
 </BaseLayout>
