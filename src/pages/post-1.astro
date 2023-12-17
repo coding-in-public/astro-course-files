@@ -1,0 +1,14 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+
+const post = await getEntry("posts", "post-1");
+const { Content, headings } = await post.render();
+---
+
+<BaseLayout title="Home">
+  <h1>{post.data.title}</h1>
+  <p>{post.data.author.id}</p>
+  <Content />
+</BaseLayout>

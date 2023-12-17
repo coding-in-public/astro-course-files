@@ -4,30 +4,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 
 const team = await getCollection("team");
-const posts = await getCollection("posts");
+const posts = await getCollection(
+  "posts",
+  ({ data }) => data.isDraft === false
+);
 ---
 
 <BaseLayout title="Home">
   <h1>Homepage</h1>
   <ul>
-    {team.map((t) => <li>{t.data.name}</li>)}
+    {
+      team.map((t) => (
+        <li>
+          <p>{t.data.name}</p>
+          <p>{t.data.role.id}</p>
+        </li>
+      ))
+    }
   </ul>
   <ul>
     {
-      posts.map((p) => {
-        return (
-          <li>
-            <p>{p.data.title}</p>
-            <p>{p.data.author.id}</p>
-            <Image
-              src={p.data.cover}
-              alt={p.data.coverAlt}
-              format="avif"
-              width="500"
-            />
-          </li>
-        );
-      })
+      posts.map((p) => (
+        <li>
+          <a href={p.slug}>Read Post</a>
+        </li>
+      ))
     }
   </ul>
 </BaseLayout>
