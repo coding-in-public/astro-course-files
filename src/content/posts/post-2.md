@@ -1,9 +1,8 @@
 ---
-title: Post 1
+title: Post 2
 tags: ["product", "tutorial"]
-pubDate: 2023-12-08
+pubDate: 2023-12-09
 isDraft: false
-canonicalURL: https://mysite.com/sample/
 author: christina
 ---
 
