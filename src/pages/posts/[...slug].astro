@@ -5,7 +5,9 @@ import { Image } from "astro:assets";
 import AuthorCard from "../../components/AuthorCard.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = await getCollection("posts", ({ data }) => {
+    return !data.isDraft;
+  });
   return posts.map((p) => {
     return {
       params: { slug: p.slug },
