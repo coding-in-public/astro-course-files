@@ -3,26 +3,26 @@ import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import AuthorCard from "../../components/AuthorCard.astro";
-import type { CollectionEntry } from "astro:content";
 
-type Params = {
-  slug: CollectionEntry<"posts">["slug"];
-};
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((p) => {
+    return {
+      params: { slug: p.slug },
+      props: { title: p.data.title, collection: p.collection },
+    };
+  });
+}
 
-const { slug } = Astro.params as Params;
-
-const posts = await getCollection("posts");
-const slugExists = posts.find((p) => p.slug === slug);
-if (!slugExists) return Astro.redirect("/404");
+const { slug } = Astro.params;
+const { title, collection } = Astro.props;
 
 const post = await getEntry("posts", slug);
-if (!post) return Astro.redirect("/404");
-
 const { Content, headings } = await post.render();
 ---
 
-<BaseLayout title={post.data.title}>
-  <h1>{post.data.title}</h1>
+<BaseLayout title={title}>
+  <h1>{title}</h1>
   <AuthorCard authorId={post.data.author.id} />
   <Content />
 </BaseLayout>
