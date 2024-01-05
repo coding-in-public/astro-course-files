@@ -1,0 +1,26 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import AuthorCard from "../../components/AuthorCard.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((p) => {
+    return {
+      params: { slug: p.slug },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+
+const post = await getEntry("posts", slug);
+const { Content, headings } = await post.render();
+---
+
+<BaseLayout title="Home">
+  <h1>{post.data.title}</h1>
+  <AuthorCard authorId={post.data.author.id} />
+  <Content />
+</BaseLayout>

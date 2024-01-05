@@ -26,7 +26,7 @@ const posts = await getCollection(
     {
       posts.map((p) => (
         <li>
-          <a href={p.slug}>Read Post</a>
+          <a href=`/posts/${p.slug}/`>Read Post</a>
         </li>
       ))
     }
