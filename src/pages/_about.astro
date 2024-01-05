@@ -1,6 +1,4 @@
 ---
-export const prerender = false
-
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
@@ -13,7 +11,7 @@ const posts = await getCollection(
 ---
 
 <BaseLayout title="Home">
-  <h1>Homepage</h1>
+  <h1>About</h1>
   <ul>
     {
       team.map((t) => (
