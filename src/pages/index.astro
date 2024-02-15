@@ -1,36 +1,16 @@
 ---
-export const prerender = false
 
-import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-
-const team = await getCollection("team");
-const posts = await getCollection(
-  "posts",
-  ({ data }) => data.isDraft === false
-);
 ---
 
-<BaseLayout title="Home">
-  <h1>Homepage</h1>
-  <ul>
-    {
-      team.map((t) => (
-        <li>
-          <p>{t.data.name}</p>
-          <p>{t.data.role.id}</p>
-        </li>
-      ))
-    }
-  </ul>
-  <ul>
-    {
-      posts.map((p) => (
-        <li>
-          <a href=`/posts/${p.slug}/`>Read Post</a>
-        </li>
-      ))
-    }
-  </ul>
-</BaseLayout>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+	</body>
+</html>
