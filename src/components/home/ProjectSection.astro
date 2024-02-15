@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import ProjectTile from "../ui/ProjectTile.astro";
+import Heading from "../ui/Heading.astro";
+import Link from "../ui/Link.astro";
+
+const projects = await getCollection("projects");
+---
+
+<section aria-label="Recent Projects">
+  <div class="projects">
+    <div class="rows">
+      <Heading tagName="h2" size="h2">Don’t take my word for it!</Heading>
+      <p>
+        Here are some recent websites and apps you can explore for yourself!
+      </p>
+      <Link href="projects" variant="secondary">See all Projects</Link>
+    </div>
+    <div class="grid-wrapper">
+      {projects.slice(0, 3).map(({ data }) => <ProjectTile data={data} />)}
+    </div>
+  </div>
+</section>
