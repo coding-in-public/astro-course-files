@@ -550,6 +550,11 @@ footer a {
   margin-right: auto;
   display: grid;
 }
+
+.hero-projects {
+  width: 100%;
+}
+
 .hero-projects .rows {
   text-align: left;
   justify-items: start;
