@@ -1,0 +1,23 @@
+<section aria-label="Contact Form">
+  <form>
+    <button>Submit</button>
+  </form>
+</section>
+
+<script>
+  const form = document.querySelector("form") as HTMLFormElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    await fetch("http://localhost:3000/contacts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "chris",
+        email: "email@email.com",
+      }),
+    });
+  });
+</script>
