@@ -1,0 +1,46 @@
+---
+const headingOptions = {
+  h1: "xxl",
+  h2: "xl",
+  h3: "lg",
+  h4: "md",
+  h5: "sm",
+  h6: "xs",
+};
+
+type Props = {
+  tagName: keyof typeof headingOptions;
+  size: keyof typeof headingOptions;
+};
+
+const { tagName, size } = Astro.props;
+const Tag = tagName;
+---
+
+<Tag class:list={["default", headingOptions[size]]}>
+  <slot />
+</Tag>
+
+<style>
+  .default {
+    line-height: 1.1;
+  }
+  .xxl {
+    font-size: var(--fs-2xl);
+  }
+  .xl {
+    font-size: var(--fs-xl);
+  }
+  .lg {
+    font-size: var(--fs-lg);
+  }
+  .md {
+    font-size: var(--fs-md);
+  }
+  .sm {
+    font-size: var(--fs-sm);
+  }
+  .xs {
+    font-size: var(--fs-xs);
+  }
+</style>
