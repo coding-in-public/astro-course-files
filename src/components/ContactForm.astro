@@ -1,11 +1,50 @@
-<section aria-label="Contact Form">
-  <form>
-    <button>Submit</button>
-  </form>
+---
+import { Image } from "astro:assets";
+
+// assets
+import katie from "@/assets/avatar.jpg";
+import Heading from "./ui/Heading.astro";
+---
+
+<section aria-label="Contact Form" class="relative">
+  <div data-pattern></div>
+  <div class="form-wrapper">
+    <Image
+      src={katie}
+      alt="Katie Haus"
+      class="headshot"
+      width="700"
+      format="avif"
+    />
+    <form id="contact-form">
+      <Heading tagName="h2" size="h2">Let’s Connect!</Heading>
+      <p>Reach out below for inquiries, quotes, or collaborations.</p>
+      <div class="input-wrapper">
+        <label for="name">First Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="e.g., Katie Haus"
+        />
+      </div>
+      <div class="input-wrapper">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="e.g., hi@email.com"
+        />
+      </div>
+      <button type="submit" class="btn primary">Contact Me</button>
+    </form>
+    <p class="message"></p>
+  </div>
 </section>
 
 <script>
-  const form = document.querySelector("form") as HTMLFormElement;
+  const form = document.querySelector("#contact-form") as HTMLFormElement;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
