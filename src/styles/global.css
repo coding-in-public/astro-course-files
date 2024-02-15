@@ -386,6 +386,7 @@ footer a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  list-style: none;
 }
 .project-tile img {
   object-fit: cover;

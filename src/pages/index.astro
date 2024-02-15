@@ -4,9 +4,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 // components
 import Hero from "@/components/home/hero.astro";
 import FeaturesBanner from "@/components/home/FeaturesBanner.astro";
+import ProjectTile from "@/components/ui/ProjectTile.astro";
+import { getEntry } from "astro:content";
+
+// temp project
+const project1 = await getEntry("projects", "custom-site-theming");
 ---
 
 <BaseLayout>
   <Hero />
   <FeaturesBanner />
+  <ProjectTile data={project1.data} />
 </BaseLayout>
