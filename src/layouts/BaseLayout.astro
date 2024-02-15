@@ -1,0 +1,14 @@
+---
+import BaseHead from "./BaseHead.astro";
+
+import "@/styles/global.css";
+---
+
+<html lang="en">
+  <BaseHead {...Astro.props} />
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
