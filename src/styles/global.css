@@ -432,10 +432,13 @@ footer a {
   -o-align-items: center;
   place-items: center;
   gap: var(--space-sm);
-  max-width: 35ch;
   margin-left: auto;
   margin-right: auto;
   display: grid;
+}
+.hero-home p,
+.hero-not-found p {
+  max-width: 35ch;
 }
 :-webkit-any(.hero-home, .hero-not-found) div {
   gap: var(--space-sm);
