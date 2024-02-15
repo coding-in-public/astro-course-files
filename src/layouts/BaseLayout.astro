@@ -1,7 +1,10 @@
 ---
+// components
 import Nav from "@/components/Nav.astro";
 import BaseHead from "./BaseHead.astro";
+import Footer from "@/components/Footer.astro";
 
+// styles
 import "@/styles/global.css";
 ---
 
@@ -12,5 +15,6 @@ import "@/styles/global.css";
     <main>
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
