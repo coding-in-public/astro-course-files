@@ -300,6 +300,24 @@ footer a {
 .post-card a {
   text-decoration: none;
 }
+.container {
+  padding-block-end: var(--space-xl);
+  padding-inline: var(--space-md);
+  -o-align-self: start;
+  -ms-flex-item-align: start;
+  -webkit-align-self: start;
+  -o-align-self: start;
+  align-self: start;
+  gap: var(--space-md);
+  justify-items: start;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.container ul {
+  padding-block-end: var(--space-md);
+}
 .filter-wrapper {
   gap: var(--space-xs);
   text-wrap: balance;
@@ -386,6 +404,8 @@ footer a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  list-style: none;
+  padding: 0;
 }
 .project-tile img {
   object-fit: cover;
@@ -549,6 +569,11 @@ footer a {
   margin-right: auto;
   display: grid;
 }
+
+.hero-projects {
+  width: 100%;
+}
+
 .hero-projects .rows {
   text-align: left;
   justify-items: start;
