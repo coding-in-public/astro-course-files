@@ -405,6 +405,7 @@ footer a {
   display: -ms-flexbox;
   display: flex;
   list-style: none;
+  padding: 0;
 }
 .project-tile img {
   object-fit: cover;
