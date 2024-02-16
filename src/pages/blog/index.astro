@@ -1,11 +1,46 @@
 ---
-import PostCard from "@/components/ui/PostCard.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro"; // components import
-import { getEntry } from "astro:content";
+// astro tools
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
-const postEntry = await getEntry("posts", "bring-out-your-inner-artist");
+// components
+import PostCard from "@/components/ui/PostCard.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// assets
+import katie from "@/assets/avatar.jpg";
+import Heading from "@/components/ui/Heading.astro";
+
+// data
+const allPosts = await getCollection("posts", ({ data }) => !data.isDraft);
 ---
 
 <BaseLayout title="Blog">
-  <PostCard post={postEntry} />
+  <section aria-label="Blog Posts">
+    <div class="blog-wrapper">
+      <div class="columns">
+        <Image
+          src={katie}
+          alt="Katie Haus"
+          class="avatar"
+          width={140}
+          height={140}
+        />
+        <div class="rows">
+          <div class="columns">
+            <Heading tagName="h1" size="h2">My Writings</Heading>
+            <!-- PAGE PLACEHOLDER -->
+          </div>
+          <p>
+            I like to write about productivity, web development, design, and
+            working with clients. Get a sense of what it’s like to work with me
+            and understand my process.
+          </p>
+        </div>
+      </div>
+      <div class="grid-wrapper">
+        {allPosts.map((p) => <PostCard post={p} />)}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
