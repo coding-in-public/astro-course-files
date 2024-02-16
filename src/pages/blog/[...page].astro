@@ -1,0 +1,82 @@
+---
+import type { GetStaticPaths } from "astro";
+// astro tools
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+// components
+import PostCard from "@/components/ui/PostCard.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// assets
+import katie from "@/assets/avatar.jpg";
+import Heading from "@/components/ui/Heading.astro";
+import Link from "@/components/ui/Link.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  // data
+  const allPosts = await getCollection("posts", ({ data }) => !data.isDraft);
+  return paginate(
+    allPosts.sort(
+      (a, b) =>
+        new Date(b.data.pubDate).getUTCDate() -
+        new Date(a.data.pubDate).getUTCDate()
+    ),
+    {
+      pageSize: 2,
+    }
+  );
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title=`My Writings | Page ${page.currentPage}`>
+  <section aria-label="Blog Posts">
+    <div class="blog-wrapper">
+      <div class="columns">
+        <Image
+          src={katie}
+          alt="Katie Haus"
+          class="avatar"
+          width={140}
+          height={140}
+        />
+        <div class="rows">
+          <div class="columns">
+            <Heading tagName="h1" size="h2">My Writings</Heading>
+            <p class="uppercase text-accent">
+              <strong>
+                Page {page.currentPage}
+              </strong>
+            </p>
+          </div>
+          <p>
+            I like to write about productivity, web development, design, and
+            working with clients. Get a sense of what it’s like to work with me
+            and understand my process.
+          </p>
+        </div>
+      </div>
+      <div class="grid-wrapper">
+        {page.data.map((p) => <PostCard post={p} />)}
+      </div>
+      <div class="pagination">
+        {
+          page.url.prev && (
+            <Link href={page.url.prev} variant="badge">
+              Previous
+            </Link>
+          )
+        }
+        {
+          page.url.next && (
+            <Link href={page.url.next} variant="badge">
+              Next
+            </Link>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
