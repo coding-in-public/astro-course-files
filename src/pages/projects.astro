@@ -1,15 +1,31 @@
 ---
+export const prerender = false;
+
+// astro tool
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+// layout
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 // components
 import Hero from "@/components/projects/hero.astro";
 import ContactForm from "@/components/ContactForm.astro";
-import { getCollection } from "astro:content";
 import ProjectTile from "@/components/ui/ProjectTile.astro";
-import { Icon } from "astro-icon/components";
+import getSearchParamAsArray from "@/lib/getSearchParamAsArray";
 
+// collections
 const allTools = await getCollection("tools");
-const projects = await getCollection("projects");
+let projects = await getCollection("projects");
+
+const filterItems = getSearchParamAsArray(Astro.url, "tools");
+
+if (filterItems.length > 0) {
+  projects = projects.filter((project) => {
+    const projectTools = project.data.icons.map((t) => t.id);
+    return filterItems.some((i) => projectTools.includes(i));
+  });
+}
 ---
 
 <BaseLayout
@@ -22,16 +38,20 @@ const projects = await getCollection("projects");
       <div class="filter-wrapper">
         <div class="columns">
           <p>Filter by tools</p>
-          <!-- check if there are filters -->
-          <button class="btn badge relative" aria-pressed="true">
-            <Icon
-              name="icon--close"
-              aria-hidden="true"
-              size={18}
-              class="close"
-            />
-            <span>Clear All</span>
-          </button>
+
+          {
+            filterItems.length > 0 && (
+              <button class="btn badge relative" aria-pressed="true">
+                <Icon
+                  name="icon--close"
+                  aria-hidden="true"
+                  size={18}
+                  class="close"
+                />
+                <span>Clear All</span>
+              </button>
+            )
+          }
         </div>
         <ul>
           {
@@ -40,15 +60,17 @@ const projects = await getCollection("projects");
                 <button
                   class="btn badge relative"
                   data-tool="t.id"
-                  aria-pressed="true"
+                  aria-pressed={filterItems.includes(t.id)}
                 >
                   <span>{t.data.title}</span>
-                  <Icon
-                    name="icon--close"
-                    aria-hidden="true"
-                    size={18}
-                    class="close"
-                  />
+                  {filterItems.includes(t.id) && (
+                    <Icon
+                      name="icon--close"
+                      aria-hidden="true"
+                      size={18}
+                      class="close"
+                    />
+                  )}
                 </button>
               </li>
             ))

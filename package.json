@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.4",
+    "@astrojs/netlify": "^5.1.2",
     "astro": "^4.4.0",
     "astro-icon": "^1.1.0",
     "json-server": "^1.0.0-alpha.23",
