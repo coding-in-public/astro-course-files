@@ -41,7 +41,11 @@ if (filterItems.length > 0) {
 
           {
             filterItems.length > 0 && (
-              <button class="btn badge relative" aria-pressed="true">
+              <button
+                class="btn badge relative"
+                aria-pressed="true"
+                id="close-all"
+              >
                 <Icon
                   name="icon--close"
                   aria-hidden="true"
@@ -59,7 +63,7 @@ if (filterItems.length > 0) {
               <li>
                 <button
                   class="btn badge relative"
-                  data-tool="t.id"
+                  data-tool={t.id}
                   aria-pressed={filterItems.includes(t.id)}
                 >
                   <span>{t.data.title}</span>
@@ -84,3 +88,48 @@ if (filterItems.length > 0) {
   </div>
   <ContactForm />
 </BaseLayout>
+
+<script>
+  // import statments
+  import getSearchParamAsArray from "@/lib/getSearchParamAsArray";
+  import setNewURLParams from "@/lib/setNewURLParams";
+
+  // query selectors
+  const filters = document.querySelectorAll(
+    "[data-tool]"
+  ) as NodeListOf<HTMLButtonElement>;
+  const clearAllBtn = document.querySelector("#close-all");
+
+  // clear all
+  clearAllBtn?.addEventListener("click", () => {
+    window.location.href = "projects";
+  });
+
+  // filtering
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const isPressed = filter.getAttribute("aria-pressed") === "true";
+
+      filter.setAttribute("aria-pressed", isPressed ? "false" : "true");
+
+      // get all existing params
+      const existingParams = getSearchParamAsArray(
+        new URL(window.location.href),
+        "tools"
+      );
+
+      const newParams = isPressed
+        ? existingParams.filter((p) => p !== filter?.dataset?.tool)
+        : [...existingParams, filter?.dataset?.tool];
+
+      // set new URL
+      const newUrl = setNewURLParams({
+        key: "tools",
+        url: new URL(window.location.href),
+        valueArray: newParams as string[],
+      });
+
+      window.location.assign(newUrl.toString());
+    });
+  });
+</script>
