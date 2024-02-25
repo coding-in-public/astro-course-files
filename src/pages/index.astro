@@ -13,10 +13,15 @@ console.log("🚀 ~ optimizedBackground:", optimizedBackground);
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body style={`background-image: url(${optimizedBackground.src});`}>
-    <h1>Astro</h1>
-    <img src="/image.jpg" alt="Katie Haus" />
-    <p>Assets Image</p>
-    <Image width={40} format="avif" src={Katie} alt="Katie Haus" />
+  <body>
+    <Image
+      width={400}
+      height={400}
+      format="avif"
+      quality={"max"}
+      src={Katie}
+      alt="Katie Haus"
+      aria-hidden="true"
+    />
   </body>
 </html>
