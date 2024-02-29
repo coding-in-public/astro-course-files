@@ -1,7 +1,7 @@
 # Practice Image Exercises:
-1. In an Astro component render a public, local, and remote image ✅
-2. In markdown, render a public, local, and remote image ✅
-3. Change the width/height of an image using the Image component ✅
-4. Create a content collection with a verified image ✅
-5. Verify the image is >= 1000px ✅
-6. Pass a rendered Image to a UI framework like React ✅
+1. Use the Image component to create multiple images with different pixel densities
+2. Use the Image component to create multiple images for different screen sizes
+3. Set jpg as a fallback for the Picture component
+4. Add the Picture component with multiple formats and sizes.
+5. Use the getImage function to generate an image with an alternative format.
+6. Apply the generated image as the background to the page.
