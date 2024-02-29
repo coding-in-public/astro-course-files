@@ -1,7 +1,13 @@
 ---
-import { Picture } from "astro:assets";
+import { getImage } from "astro:assets";
 
 import Katie from "../assets/image.jpg";
+
+const optimizedBackground = await getImage({
+  src: Katie,
+  format: "webp",
+  width: 240,
+});
 ---
 
 <html lang="en">
@@ -12,20 +18,5 @@ import Katie from "../assets/image.jpg";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
-    <p>Local</p>
-    <Picture
-      src={Katie}
-      alt="Katie Haus"
-      fallbackFormat="png"
-      formats={["avif", "webp", "jpg"]}
-      widths={[240, 540, 720, Katie.width]}
-      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${Katie.width}px`}
-      class="w-full"
-      pictureAttributes={{
-        class: "w-28",
-        style: "display: none;",
-      }}
-    />
-  </body>
+  <body style={`background-image: url(${optimizedBackground.src});`}> </body>
 </html>
