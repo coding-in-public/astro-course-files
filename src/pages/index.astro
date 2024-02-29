@@ -17,26 +17,12 @@ const post = await getEntry("posts", "1");
     <title>Astro</title>
   </head>
   <body>
-    <ReactWrapper>
-      <Image src={Katie} alt="Katie Haus" width={200} height={200} />
-    </ReactWrapper>
-
-    <p>Content Collections</p>
-    <Image src={post.data.cover} alt="Katie Haus" width={200} height={200} />
-
-    <p>Public</p>
-    <Image src="/image.jpg" alt="Katie Haus" width={200} height={200} />
-
     <p>Local</p>
-    <Image src={Katie} alt="Katie Haus" width={150} height={150} />
-
-    <p>Remote</p>
     <Image
-      src="https://astro.build/_astro/content-focused.VdVRy80q.webp"
-      alt=""
-      inferSize
-      width={400}
-      height={160}
+      src={Katie}
+      alt="Katie Haus"
+      widths={[240, 540, 720, Katie.width]}
+      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${Katie.width}px`}
     />
   </body>
 </html>
