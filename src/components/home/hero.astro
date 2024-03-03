@@ -1,0 +1,27 @@
+---
+// Astro tools
+import { Image } from "astro:assets";
+
+// components
+import Heading from "../ui/Heading.astro";
+import Link from "../ui/Link.astro";
+
+// assets
+import katie from "@/assets/avatar.jpg";
+---
+
+<header aria-label="Introduction to Katie" class="hero-home">
+  <Image
+    src={katie}
+    alt="Katie Haus"
+    width={200}
+    format="avif"
+    class="avatar"
+  />
+  <Heading tagName="h1" size="h2">👋 Hi, I’m Katie</Heading>
+  <p>I’m a self-taught designer and developer obsessed with quality.</p>
+  <div>
+    <Link href="#" variant="secondary">Download CV</Link>
+    <Link href="#contact">Let’s Connect</Link>
+  </div>
+</header>

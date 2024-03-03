@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+
+// assets
+import katie from "@/assets/avatar.jpg";
+import Heading from "./ui/Heading.astro";
+---
+
+<section aria-label="Contact Form" class="relative" id="contact">
+  <div data-pattern></div>
+  <div class="form-wrapper">
+    <Image
+      src={katie}
+      alt="Katie Haus"
+      class="headshot"
+      width="700"
+      format="avif"
+    />
+    <form id="contact-form">
+      <Heading tagName="h2" size="h2">Let’s Connect!</Heading>
+      <p>Reach out below for inquiries, quotes, or collaborations.</p>
+      <div class="input-wrapper">
+        <label for="name">First Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder="e.g., Katie Haus"
+        />
+      </div>
+      <div class="input-wrapper">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="e.g., hi@email.com"
+        />
+      </div>
+      <button type="submit" class="btn primary">Contact Me</button>
+      <p class="message"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const contactForm = document.querySelector(
+    "#contact-form"
+  ) as HTMLFormElement;
+  const messageParagraph = document.querySelector(
+    ".message"
+  ) as HTMLParagraphElement;
+
+  const updateMessage = (message: string, type: "error" | "success") => {
+    messageParagraph.classList.add(type);
+    messageParagraph.textContent = message;
+    setTimeout(() => {
+      messageParagraph.textContent = "";
+      messageParagraph.classList.remove(type);
+    }, 3000);
+  };
+
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+    const { name, email } = Object.fromEntries(formData);
+
+    // Note: more validation!
+    if (!name || typeof name !== "string" || name.length < 2) {
+      return updateMessage("Please enter a valid name", "error");
+    }
+    if (!email || typeof email !== "string" || !email.includes("@")) {
+      return updateMessage("Please enter a valid email", "error");
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email }),
+      });
+      if (!res.ok) {
+        throw new Error("Response was not OK");
+      }
+      contactForm.reset();
+      return updateMessage("Thanks for reaching out!", "success");
+    } catch (e) {
+      if (e instanceof Error) {
+        console.error(e.message);
+        return updateMessage(e.message, "error");
+      }
+      return updateMessage(
+        "Something went wrong. Please try again later.",
+        "error"
+      );
+    }
+  });
+</script>

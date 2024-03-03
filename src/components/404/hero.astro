@@ -1,0 +1,30 @@
+---
+// Astro tools
+import { Image } from "astro:assets";
+
+// components
+import Heading from "../ui/Heading.astro";
+import Link from "../ui/Link.astro";
+
+// assets
+import katie from "@/assets/avatar.jpg";
+---
+
+<header aria-label="Introduction to Katie" class="hero-not-found">
+  <Image
+    src={katie}
+    alt="Katie Haus"
+    width={200}
+    format="avif"
+    class="avatar"
+  />
+  <Heading tagName="h1" size="h2">Are you lost?</Heading>
+  <p>
+    Oops! The page you're looking for seems to have wandered off. Please try
+    again or visit our homepage for more information.
+  </p>
+  <div>
+    <Link href="#" variant="secondary">Download CV</Link>
+    <Link href="/">Go Home</Link>
+  </div>
+</header>

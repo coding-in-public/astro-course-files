@@ -1,0 +1,30 @@
+---
+import { socialData } from "@/data/siteData";
+import { Icon } from "astro-icon/components";
+---
+
+<footer>
+  <div>
+    <p>
+      &copy; <span id="copyright">{new Date().getFullYear()}</span> Katie Haus. All
+      rights reserved. I’m a skilled web developer passionate about creating innovative
+      and user-friendly websites.
+    </p>
+    <ul>
+      {
+        socialData.map(({ href, title, icon }) => (
+          <li>
+            <a href={href} aria-label={title} title={title}>
+              <Icon name={icon} size={24} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const copyrightSpan = document.querySelector("#copyright") as HTMLSpanElement;
+  copyrightSpan.textContent = new Date().getFullYear().toString();
+</script>
