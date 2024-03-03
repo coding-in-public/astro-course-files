@@ -1,0 +1,16 @@
+product_id: 1
+product_name: Smartphone
+price: 599.99
+in_stock: true
+colors:
+  - Black
+  - Silver
+  - Gold
+details:
+  brand: TechGadgets
+  model: Smart2024
+  screen_size: 6.5
+  features:
+    - Dual Camera
+    - Fingerprint Sensor
+    - 5G Ready

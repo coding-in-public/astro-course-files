@@ -1,0 +1,16 @@
+product_id: 3
+product_name: Headphones
+price: 129.99
+in_stock: true
+colors:
+  - Black
+  - White
+  - Red
+details:
+  brand: AudioTech
+  model: SoundBeats X
+  wireless: true
+  features:
+    - Noise Cancelling
+    - Bluetooth 5.0
+    - 20 Hours Battery Life

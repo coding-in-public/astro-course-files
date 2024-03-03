@@ -1,0 +1,15 @@
+product_id: 2
+product_name: Laptop
+price: 1099.99
+in_stock: true
+colors:
+  - Silver
+  - Space Gray
+details:
+  brand: BestLaptops
+  model: PowerBook Pro
+  screen_size: 15.6
+  features:
+    - SSD Storage
+    - Touchscreen
+    - Ultra-slim Design
