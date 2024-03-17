@@ -4,14 +4,16 @@ import Checkbox from "./ui/Checkbox.astro";
 import Button from "./ui/Button.astro";
 import { Icon } from "astro-icon/components";
 
+export type LinkProps = {
+  id: number;
+  title: string;
+  url: string;
+  description: string;
+  isRead: boolean;
+};
+
 type Props = {
-  link: {
-    id: number;
-    title: string;
-    url: string;
-    description: string;
-    isRead: boolean;
-  };
+  link: LinkProps;
 };
 
 const { link } = Astro.props;

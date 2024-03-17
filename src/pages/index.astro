@@ -1,11 +1,16 @@
 ---
-import LinkCard from "@/components/LinkCard.astro";
+import LinkCard, { type LinkProps } from "@/components/LinkCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const req = await fetch(`${Astro.url.origin}/api/getLinks.json`);
+
+const links = await req.json();
 ---
 
 <BaseLayout>
   <div
     class="grid gap-6 grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))] items-start"
   >
+    {links.map((l: LinkProps) => <LinkCard link={l} />)}
   </div>
 </BaseLayout>
