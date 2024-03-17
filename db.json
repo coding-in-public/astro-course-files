@@ -1,3 +1,18 @@
 {
-  "links": []
+  "links": [
+    {
+      "id": "2850",
+      "title": "Title",
+      "description": "description",
+      "url": "https://google.com",
+      "isRead": false
+    },
+    {
+      "id": "d682",
+      "title": "sidjf",
+      "description": "aspoidfjad",
+      "url": "https://",
+      "isRead": true
+    }
+  ]
 }

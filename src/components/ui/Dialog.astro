@@ -31,6 +31,9 @@ import TextInput from "./TextInput.astro";
 </dialog>
 
 <script>
+  import sanitize from "sanitize-html";
+
+  // query selectors
   const addForm = document.querySelector("#add-form") as HTMLFormElement;
   const openDialogBtn = document.getElementById(
     "open-dialog"
@@ -40,6 +43,7 @@ import TextInput from "./TextInput.astro";
   ) as HTMLButtonElement;
   const dialog = document.querySelector("dialog") as HTMLDialogElement;
 
+  // dialog
   openDialogBtn.addEventListener("click", () => dialog.showModal());
 
   closeDialogBtn.addEventListener("click", () => dialog.close());
@@ -47,6 +51,49 @@ import TextInput from "./TextInput.astro";
   dialog.addEventListener("click", (e) => {
     if (e.target === e.currentTarget) {
       dialog.close();
+    }
+  });
+
+  // form submit
+  addForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData(addForm);
+      const title = sanitize(formData.get("link-title") as string);
+      const description = sanitize(formData.get("link-description") as string);
+      const url = sanitize(formData.get("link-url") as string);
+      const isRead = formData?.get("isRead") === "on" ? true : false ?? false;
+
+      const req = await fetch("/api/addLink.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          url,
+          isRead,
+        }),
+      });
+
+      if (!req.ok) {
+        throw new Error("Req was not okay!");
+      }
+
+      const res = await req.json();
+      if (res.success) {
+        addForm.reset();
+        dialog.close();
+        location.reload();
+      } else {
+        throw new Error(res.message);
+      }
+    } catch (e) {
+      console.log(e);
+      if (e instanceof Error) {
+        alert(e.message);
+      }
     }
   });
 </script>
