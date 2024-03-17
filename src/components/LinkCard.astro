@@ -75,4 +75,37 @@ const { link } = Astro.props;
       }
     });
   });
+
+  // is Read Links
+  const isReadChecks = document.querySelectorAll(
+    "[data-isRead]"
+  ) as NodeListOf<HTMLInputElement>;
+
+  isReadChecks.forEach((check) => {
+    check.addEventListener("click", async () => {
+      const id = check.dataset.id;
+      const isRead = check.checked;
+      try {
+        if (!id) {
+          throw new Error("No id present");
+        }
+        console.log("something here");
+        const req = await fetch(`/api/${id}.json`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ isRead }),
+        });
+
+        if (!req.ok) {
+          throw new Error("Patch req was not OK");
+        }
+
+        console.log("updated");
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  });
 </script>
