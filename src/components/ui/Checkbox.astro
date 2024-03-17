@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  checked: boolean;
+  inputId: number;
+}
+
+const { inputId, checked, ...rest } = Astro.props;
+---
+
+<div class="relative max-w-fit flex gap-2 items-center">
+  <input
+    type="checkbox"
+    checked={checked}
+    class="absolute inset-0 peer opacity-0 cursor-pointer"
+    id={`check-${inputId}`}
+    {...rest}
+  />
+  <div
+    class="size-6 border-2 border-theme-accent rounded-md grid place-items-center text-theme-base peer-checked:bg-theme-accent peer-focus-visible:ring-2 ring-theme-accent ring-offset-2 ring-offset-theme-base"
+    aria-hidden="true"
+  >
+    <Icon name="check" size={16} />
+  </div>
+  <label for={`check-${inputId}`}>Is Read?</label>
+</div>

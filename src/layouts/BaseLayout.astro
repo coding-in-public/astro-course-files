@@ -1,0 +1,66 @@
+---
+import { getImage } from "astro:assets";
+import dots from "@/assets/dots.png";
+import Footer from "../components/Footer.astro";
+import Button from "@/components/ui/Button.astro";
+import Dialog from "@/components/ui/Dialog.astro";
+
+const dotsImage = await getImage({ src: dots, format: "avif" });
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title = "Dev Links", description = "Links for web developers." } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="msapplication-TileColor" content="#F46633" />
+    <meta name="theme-color" content="#202020" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body
+    class="bg-gradient-to-b from-black to-theme-base text-theme-text text-base relative"
+  >
+    <div
+      style={`background-image: url(${dotsImage.src}); -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))`}
+      class="absolute left-0 h-60 right-0 opacity-40 mix-blend-difference -z-10"
+    >
+    </div>
+    <div
+      class="grid gap-10 sm:gap-16 min-h-screen grid-rows-auto_1fr_auto relative overflow-hidden"
+    >
+      <header class="grid place-items-center py-8">
+        <h1
+          class="text-theme-accent font-bold text-4xl [text-shadow:_0_10px_15px_black]"
+        >
+          Dev Links
+        </h1>
+        <Button intent="accent" id="open-dialog">Add Link</Button>
+      </header>
+      <main
+        class="container after:absolute after:bg-theme-accent after:w-3/4 after:left-1/2 after:-translate-x-1/2 after:h-96 after:mix-blend-difference after:rounded-full after:-bottom-1/4 after:-z-50 after:blur-3xl after:opacity-40"
+      >
+        <slot />
+      </main>
+      <Footer />
+      <Dialog />
+    </div>
+    <div
+      style={`background-image: url(${dotsImage.src}); -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, to(rgba(0,0,0,1)), from(rgba(0,0,0,0)))`}
+      class="absolute left-0 h-60 bottom-0 right-0 opacity-30 mix-blend-difference -z-10"
+    >
+    </div>
+  </body>
+</html>

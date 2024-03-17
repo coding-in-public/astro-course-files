@@ -1,0 +1,46 @@
+---
+import Link from "./ui/Link.astro";
+import Checkbox from "./ui/Checkbox.astro";
+import Button from "./ui/Button.astro";
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  link: {
+    id: number;
+    title: string;
+    url: string;
+    description: string;
+    isRead: boolean;
+  };
+};
+
+const { link } = Astro.props;
+---
+
+<article
+  class="p-4 sm:p-6 bg-theme-base text-theme-text shadow-black/60 shadow-xl rounded-md grid gap-6 relative"
+>
+  <div class="grid gap-2">
+    <Checkbox
+      checked={link.isRead}
+      inputId={link.id}
+      data-id={link.id}
+      data-isRead
+    />
+    <h2 class="leading-tight font-bold text-theme-accent text-xl text-balance">
+      {link.title}
+    </h2>
+    <p>{link.description}</p>
+  </div>
+  <Link href={link.url} intent="primary">Open Link</Link>
+  <Button
+    intent="accent"
+    size="square"
+    data-delete
+    data-id={link.id}
+    classes="absolute -top-2 -right-2 rounded-full border-4 border-theme-base hover:scale-105 active:scale-95 ring-offset-2"
+    aria-label={`Delete Link: ${link.title}`}
+  >
+    <Icon name="trash" size={24} />
+  </Button>
+</article>

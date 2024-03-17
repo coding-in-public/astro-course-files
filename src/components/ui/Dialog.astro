@@ -1,0 +1,52 @@
+---
+import Button from "./Button.astro";
+import Checkbox from "./Checkbox.astro";
+import TextArea from "./TextArea.astro";
+import TextInput from "./TextInput.astro";
+---
+
+<dialog
+  class="bg-theme-base text-theme-text shadow-black/60 shadow-xl rounded-md w-full max-w-sm backdrop:bg-black/60"
+>
+  <div class="p-4 sm:p-8 grid gap-6">
+    <form class="grid gap-4" id="add-form">
+      <h2 class="text-xl text-theme-accent font-bold leading-tight">
+        Add a Link
+      </h2>
+      <TextInput name="Link Title" inputId={Math.random()} />
+      <TextArea name="Link Description" id={Math.random()} />
+      <TextInput
+        name="Link URL"
+        inputId={Math.random()}
+        title="Must start with https://"
+        pattern="https?://.*"
+      />
+      <Checkbox checked={false} inputId={Math.random()} name="isRead" />
+      <div class="flex gap-4 flex-wrap">
+        <Button intent="primary" id="close-dialog" type="button">Close</Button>
+        <Button intent="accent" type="submit">Add Link</Button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  const addForm = document.querySelector("#add-form") as HTMLFormElement;
+  const openDialogBtn = document.getElementById(
+    "open-dialog"
+  ) as HTMLButtonElement;
+  const closeDialogBtn = document.getElementById(
+    "close-dialog"
+  ) as HTMLButtonElement;
+  const dialog = document.querySelector("dialog") as HTMLDialogElement;
+
+  openDialogBtn.addEventListener("click", () => dialog.showModal());
+
+  closeDialogBtn.addEventListener("click", () => dialog.close());
+
+  dialog.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) {
+      dialog.close();
+    }
+  });
+</script>

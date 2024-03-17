@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  name: string;
+  inputId: number;
+}
+
+const { inputId, name, ...rest } = Astro.props;
+---
+
+<div class="relative grid gap-1">
+  <label for={`input-${inputId}`} class="text-sm uppercase">{name}</label>
+  <input
+    type="text"
+    required
+    id={`input-${inputId}`}
+    {...rest}
+    name={name.toLowerCase().replace(" ", "-")}
+    class="p-2 bg-theme-text text-theme-base rounded focus:outline-none focus-visible:ring-2 ring-offset-4 ring-offset-theme-base ring-theme-accent"
+  />
+</div>
